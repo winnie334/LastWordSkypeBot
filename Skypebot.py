@@ -1,6 +1,6 @@
 from cleverwrap import CleverWrap
 from skpy import Skype
-import time, datetime
+import time
 
 
 def checkfornewmessages(sk_instance, id, last_msg):
@@ -20,8 +20,8 @@ if __name__ == '__main__':
 	-send the answer back
 	"""
 
-	timeout = 10		# time to wait between every message request
-	contact = "cornelis.bleijenberg1"		# skype contact who thinks he can last-word you
+	timeout = 5		# time to wait between every message request
+	contact = "nina.appels"		# skype contact who thinks he can last-word you
 	cleverbot = CleverWrap("CC3c4wQUshfBgb6iLEEjFe1xWhw")
 
 	sk = Skype('winnie33_', input('password? '))
@@ -34,7 +34,8 @@ if __name__ == '__main__':
 		if new_message is not None:
 			answer = cleverbot.say(new_message)
 			sk.chats[id].sendMsg(answer)
-			print('New message received! Answer: ' + answer)
+			print('[' + newtime.hour + ':' + newtime.minute + '] ' + new_message)
+			print('Answer: ' + answer)
 			last_msg = newtime
 		time.sleep(timeout)
 
